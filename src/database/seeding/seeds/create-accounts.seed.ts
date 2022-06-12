@@ -1,8 +1,8 @@
 import { Factory, Seeder } from 'typeorm-seeding'
-import { User } from '../../../modules/users/entities/User'
+import { Account } from '../../../modules/users/entities/Account'
 
 export default class CreateUsers implements Seeder {
   public async run(factory: Factory): Promise<void> {
-    await factory(User)().createMany(10)
+    await factory(Account)().createMany(10)
   }
 }

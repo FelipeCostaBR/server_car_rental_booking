@@ -6,7 +6,7 @@
   "scripts": {
     "format:write": "prettier --write .",
     "lint:fix": "eslint --fix ./src/*.ts",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js -d ./src/database/data-source.config.ts",
+    "datasource": "ts-node ./node_modules/typeorm/cli.js -d ./src/database/data-source.config.ts",
     "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "dev:server": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts"
   },

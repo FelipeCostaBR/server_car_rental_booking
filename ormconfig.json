@@ -5,7 +5,13 @@
   "username": "postgres",
   "password": "docker",
   "database": "booking",
-  "entities": ["./src/modules/**/entities/*.ts"],
-  "seeds": ["src/database/seeding/seeds/**/*{.ts,.js}"],
-  "factories": ["src/database/seeding/factories/**/*{.ts,.js}"]
+  "entities": [
+    "./src/modules/**/entities/*.ts"
+  ],
+  "seeds": [
+    "src/database/seeding/seeds/**/*{.ts,.js}"
+  ],
+  "factories": [
+    "src/database/seeding/factories/**/*{.ts,.js}"
+  ]
 }
