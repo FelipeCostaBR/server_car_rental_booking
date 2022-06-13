@@ -3,54 +3,27 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
+import { Account_detail } from './Account_detail'
 
 @Entity('accounts')
 export class Account {
   @PrimaryGeneratedColumn()
-  account_id: number
+  id: number
 
-  @Column()
-  first_name: string
-
-  @Column()
-  last_name: string
-
-  @Column()
-  gender: string
-
-  @Column()
-  date_birth: string
+  @OneToOne(() => Account_detail, { cascade: true })
+  @JoinColumn({ name: 'account_details_id' })
+  account_detail: Account_detail
 
   @Column()
   email: string
 
   @Column()
   password: string
-
-  @Column()
-  phone: string
-
-  @Column()
-  address_line_1: string
-
-  @Column()
-  address_line_2: string
-
-
-  @Column()
-  city: string
-
-  @Column()
-  state: string
-
-  @Column()
-  country: string
-
-  @Column()
-  post_code: string
 
   @Column()
   is_active: boolean
