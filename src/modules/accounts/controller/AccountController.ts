@@ -6,24 +6,24 @@ const accountRepository = new AccountRepository()
 const accountService = new AccountService(accountRepository)
 
 class AccountController {
-  // async index(_: Request, response: Response): Promise<Response> {
-  //   try {
-  //     const users = await userService.index()
-  //     return response.status(200).send(users)
-  //   } catch (err) {
-  //     return response.status(500).json(err.message)
-  //   }
-  // }
+  async index(_: Request, response: Response): Promise<Response> {
+    try {
+      const accounts = await accountService.index()
+      return response.status(200).send({ accounts })
+    } catch (err) {
+      return response.status(500).json(err.message)
+    }
+  }
 
-  // async show(request: Request, response: Response): Promise<Response> {
-  //   const { id } = request.params
-  //   try {
-  //     const users = await userService.find({ id })
-  //     return response.status(200).send(users)
-  //   } catch (err) {
-  //     return response.status(500).json(err.message)
-  //   }
-  // }
+  async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params
+    try {
+      const account = await accountService.find({ id })
+      return response.status(200).send({ account })
+    } catch (err) {
+      return response.status(500).json(err.message)
+    }
+  }
 
   async create(request: Request, response: Response): Promise<Response> {
     const {

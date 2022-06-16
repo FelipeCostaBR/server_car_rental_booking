@@ -7,6 +7,7 @@ import consola from 'consola'
 
 import { AppError } from './errors/AppError'
 import router from './routes/router'
+import { create } from 'domain'
 
 const app = express()
 

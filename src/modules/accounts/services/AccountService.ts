@@ -1,26 +1,28 @@
 import { hash } from 'bcryptjs'
 import { AppError } from '../../../errors/AppError'
 import { formatDate } from '../../../helper/formatDate'
+import { IAccountDTO } from '../dtos/IAccount'
 import { ICreateAccountDTO } from '../dtos/ICreateAccount'
 import { Account } from '../entities/Account'
+import { Account_detail } from '../entities/Account_detail'
 import { IAccountRepository } from '../repositories/IAccountRepository'
 
 export class AccountService {
-  constructor(private accountRepository: IAccountRepository) {}
+  constructor(private accountRepository: IAccountRepository) { }
 
-  // async index(): Promise<{ accounts: Account[] }> {
-  //   return await this.accountRepository.index()
-  // }
+  async index(): Promise<IAccountDTO> {
+    return await this.accountRepository.index()
+  }
 
-  // async find({ id }): Promise<{ Account: Account }> {
-  //   const Account = await this.AccountRepository.find(id)
+  async find({ id }): Promise<IAccountDTO> {
+    const account = await this.accountRepository.find(id)
 
-  //   if (!Account) {
-  //     throw new AppError('Account does not exist.')
-  //   }
+    if (!account) {
+      throw new AppError('Account does not exist.')
+    }
 
-  //   return Account
-  // }
+    return account
+  }
 
   async create({
     first_name,
@@ -37,11 +39,11 @@ export class AccountService {
     country,
     post_code,
   }: ICreateAccountDTO): Promise<void> {
-    // const account = await this.AccountRepository.findOneBy(email)
+    const account = await this.accountRepository.findOneBy(email)
 
-    // if (account) {
-    //   throw new AppError('Email already exist.')
-    // }
+    if (account) {
+      throw new AppError('Email already exist.')
+    }
 
     const passwordHash = await hash(password, 8)
     const date_birth_formatted = formatDate(date_birth)

@@ -5,15 +5,15 @@ const accountRoutes = Router()
 
 const accountController = new AccountController()
 
-// userRoutes.get('/', (request: Request, response: Response) => {
-//   userController.index(request, response)
-// })
+accountRoutes.get('/', (request: Request, response: Response) => {
+  accountController.index(request, response)
+})
 
-// userRoutes.get('/:id', (request: Request, response: Response) => {
-//   userController.show(request, response)
-// })
+accountRoutes.get('/:id', (request: Request, response: Response) => {
+  accountController.show(request, response)
+})
 
-accountRoutes.post('/create', (request: Request, response: Response) => {
+accountRoutes.post('/', (request: Request, response: Response) => {
   accountController.create(request, response)
 })
 
