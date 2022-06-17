@@ -22,4 +22,4 @@ AppDataSource.initialize()
   .then(async () => {
     consola.log('Initializing the database...')
   })
-  .catch(err => console.log(err))
+  .catch(err => consola.log(err))

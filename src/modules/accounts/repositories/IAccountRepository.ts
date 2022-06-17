@@ -6,7 +6,7 @@ import { Account } from '../entities/Account'
 interface IAccountRepository {
   index(): Promise<IAccountDTO>
   create(account: ICreateAccountDTO): Promise<void>
-  find(id: number): Promise<IAccountDTO>
+  find(id: number): Promise<IAccountDTO | void>
   findOneBy(value: string): Promise<Account>
 }
 

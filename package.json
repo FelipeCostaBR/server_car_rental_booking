@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "format:write": "prettier --write .",
-    "lint:fix": "eslint --fix ./src/*.ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "datasource": "ts-node ./node_modules/typeorm/cli.js -d ./src/database/data-source.config.ts",
     "db:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "dev:server": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
@@ -27,6 +27,8 @@
     "@faker-js/faker": "^7.1.0",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "faker": "^6.6.6",

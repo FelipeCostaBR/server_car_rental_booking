@@ -3,12 +3,10 @@ import { AppError } from '../../../errors/AppError'
 import { formatDate } from '../../../helper/formatDate'
 import { IAccountDTO } from '../dtos/IAccount'
 import { ICreateAccountDTO } from '../dtos/ICreateAccount'
-import { Account } from '../entities/Account'
-import { Account_detail } from '../entities/Account_detail'
 import { IAccountRepository } from '../repositories/IAccountRepository'
 
 export class AccountService {
-  constructor(private accountRepository: IAccountRepository) { }
+  constructor(private accountRepository: IAccountRepository) {}
 
   async index(): Promise<IAccountDTO> {
     return await this.accountRepository.index()

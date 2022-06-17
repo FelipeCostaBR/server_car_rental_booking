@@ -19,5 +19,4 @@ interface IAccountDTO {
   pop(): void
 }
 
-
 export { IAccountDTO }

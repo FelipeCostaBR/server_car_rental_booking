@@ -7,7 +7,7 @@ function isOver18(dateOfBirth: Date) {
   return dateOfBirth <= date18YrsAgo
 }
 
-export default function validate_dt_birth(date: Date): String {
+export default function validate_dt_birth(date: Date): string {
   while (!isOver18(date)) {
     date = faker.date.past(70)
   }
