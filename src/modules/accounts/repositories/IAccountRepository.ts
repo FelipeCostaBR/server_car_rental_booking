@@ -1,12 +1,10 @@
-import { IAccountDTO } from '../dtos/IAccount'
 import { ICreateAccountDTO } from '../dtos/ICreateAccount'
 import { Account } from '../entities/Account'
-// import { Account_detail } from '../entities/Account_detail'
 
 interface IAccountRepository {
-  index(): Promise<IAccountDTO>
+  index(): Promise<Account[]>
   create(account: ICreateAccountDTO): Promise<void>
-  find(id: number): Promise<IAccountDTO | void>
+  find(id: number): Promise<Account>
   findOneBy(value: string): Promise<Account>
 }
 
