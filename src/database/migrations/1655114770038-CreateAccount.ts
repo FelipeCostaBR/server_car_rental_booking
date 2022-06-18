@@ -1,23 +1,26 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm'
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm'
 
-export default class CreateUser1654356826253 implements MigrationInterface {
-  name = 'CreateUser1654356826253'
-
+export class CreateAccount1655084399595 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'users',
+        name: 'accounts',
         columns: [
           {
             name: 'id',
-            type: 'uuid',
+            type: 'int',
             isPrimary: true,
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
-            name: 'name',
-            type: 'varchar',
+            name: 'account_details_id',
+            type: 'int',
           },
           {
             name: 'email',
@@ -27,15 +30,6 @@ export default class CreateUser1654356826253 implements MigrationInterface {
           {
             name: 'password',
             type: 'varchar',
-          },
-          {
-            name: 'date_birth',
-            type: 'varchar',
-          },
-          {
-            name: 'isAdmin',
-            type: 'boolean',
-            default: 'false',
           },
           {
             name: 'is_active',
@@ -60,9 +54,23 @@ export default class CreateUser1654356826253 implements MigrationInterface {
         ],
       })
     )
+
+    await queryRunner.createForeignKey(
+      'accounts',
+      new TableForeignKey({
+        name: 'account_details_id_FK',
+        columnNames: ['account_details_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'accounts_details',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
+      })
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "users"`)
+    await queryRunner.dropForeignKey("accounts", 'account_details_id_FK')
+    await queryRunner.dropColumn('accounts', 'account_details_id')
+    await queryRunner.query(`DROP TABLE "accounts"`)
   }
 }
