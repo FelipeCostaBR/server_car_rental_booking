@@ -1,4 +1,5 @@
 import { hash } from 'bcryptjs'
+import { isBelow21 } from '../../../helper/isOver18'
 import { AppError } from '../../../errors/AppError'
 import { format_account } from '../../../helper/formatAccount'
 import { formatDate } from '../../../helper/formatDate'
@@ -23,7 +24,7 @@ export class AccountService {
     const account = await this.accountRepository.find(id)
 
     if (!account) {
-      throw new AppError('Account does not exist.')
+      throw new AppError('Account does not exist')
     }
 
     return format_account(account)
@@ -47,7 +48,11 @@ export class AccountService {
     const account = await this.accountRepository.findOneBy(email)
 
     if (account) {
-      throw new AppError('Email already exist.')
+      throw new AppError('Email already exist')
+    }
+
+    if (isBelow21(date_birth)) {
+      throw new AppError('You must be more than 21 years old')
     }
 
     const passwordHash = await hash(password, 8)

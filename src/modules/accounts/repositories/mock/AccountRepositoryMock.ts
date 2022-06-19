@@ -3,7 +3,7 @@ import { Account } from '../../entities/Account'
 import { Account_detail } from '../../entities/Account_detail'
 import { IAccountRepository } from '../IAccountRepository'
 
-export class AccountRepositoryMock implements IAccountRepository {
+class AccountRepositoryMock implements IAccountRepository {
   accounts: Account[] = []
 
   async index(): Promise<Account[]> {
@@ -45,6 +45,7 @@ export class AccountRepositoryMock implements IAccountRepository {
     const account_details = new Account_detail()
 
     const new_account_details = Object.assign(account_details, {
+      id: this.accounts.length + 1,
       first_name,
       last_name,
       gender,
@@ -59,10 +60,18 @@ export class AccountRepositoryMock implements IAccountRepository {
     })
 
     const new_account = Object.assign(account, {
+      id: this.accounts.length + 1,
+      account_detail: new_account_details,
       email,
       password,
-      account_details: new_account_details,
+      is_active: true,
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
     })
+
     this.accounts.push(new_account)
   }
 }
+
+export { AccountRepositoryMock }
