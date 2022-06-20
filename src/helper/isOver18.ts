@@ -1,16 +1,9 @@
-import { faker } from '@faker-js/faker'
+import { differenceInYears, parse } from 'date-fns'
 
-function isOver18(dateOfBirth: Date) {
-  const date18YrsAgo = new Date()
-  date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18)
+const AGE_THRESHOLD = 21
 
-  return dateOfBirth <= date18YrsAgo
-}
-
-export default function validate_dt_birth(date: Date): String {
-  while (!isOver18(date)) {
-    date = faker.date.past(70)
-  }
-
-  return date.toISOString()
+export function isBelow21(dateOfBirth: string) {
+  const date = parse(dateOfBirth, 'yyyy-mm-dd', new Date())
+  const age = differenceInYears(new Date(), date)
+  return age < AGE_THRESHOLD
 }

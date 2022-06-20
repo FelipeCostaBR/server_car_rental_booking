@@ -69,7 +69,7 @@ export class CreateAccount1655084399595 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey("accounts", 'account_details_id_FK')
+    await queryRunner.dropForeignKey('accounts', 'account_details_id_FK')
     await queryRunner.dropColumn('accounts', 'account_details_id')
     await queryRunner.query(`DROP TABLE "accounts"`)
   }
