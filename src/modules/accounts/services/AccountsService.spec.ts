@@ -111,8 +111,12 @@ describe('when request Account', () => {
 
   it('should fail if account does not exist', async () => {
     await account_service.create(create_account_mock())
-    await account_service.find({ id: 2 }).then(response => {
-      expect(response).toBe('Account does not exist')
-    })
+    const account_mock = await account_service.index()
+
+    try {
+      await account_service.find({ id: account_mock.length + 1 })
+    } catch (error) {
+      expect(error.message).toEqual('Account does not exist')
+    }
   })
 })
