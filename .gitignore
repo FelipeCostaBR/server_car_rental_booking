@@ -7,3 +7,7 @@ temp/
 
 tmp/*
 !tmp/.gitkeep
+
+# Ignore test-related files
+/coverage.data
+/coverage/
