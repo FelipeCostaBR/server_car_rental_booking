@@ -6,6 +6,8 @@ COPY package.json ./
 
 RUN npm install -g npm@latest
 
+RUN yarn
+
 COPY . .
 
 EXPOSE 3333
