@@ -1,12 +1,11 @@
-FROM node
+FROM node:16.13.1
 
 WORKDIR /usr/app
 
-COPY package.json ./
+COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install -g npm@latest
-
-RUN yarn
+RUN npm install -g npm && \ 
+  npm install
 
 COPY . .
 
