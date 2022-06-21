@@ -9,7 +9,7 @@ we are using Docker to run the server, it will make sure that everyone is workin
 - Download docker and have it running.
 - clone the repo.
 - build the image
-  $ `docker build -t booking`
+  $ `docker build -t booking .`
 
 - create the containers and start the server:
   $ `docker-compose up`
