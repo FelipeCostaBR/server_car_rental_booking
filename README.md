@@ -21,21 +21,22 @@ we are using Docker to run the server, it will make sure that everyone is workin
 
 - The project is UP and RUNNING 🥳. You should be able to create a new Account using any platform as API management.
 
-- hit the endpoint **POST** http://localhost:3333/accounts with the JSON body 
-{
-	"first_name": "Test",
-	"last_name": "Piggott",
-	"email": "test.piggott@gmail.com",
-	"password": "123456",
-	"gender": "female",
-	"date_birth": "1992-07-15",
-	"phone": "+61 0404 412 631",
-	"address_line_1": "40 Test Ave",
-	"city": "Test",
-	"state": "Test",
-	"country": "Australia",
-	"post_code": "3036"
+- hit the endpoint **POST** http://localhost:3333/accounts with the JSON body\
+{\
+	"first_name": "Test",\
+	"last_name": "Piggott",\
+	"email": "test.piggott@gmail.com",\
+	"password": "123456",\
+	"gender": "female",\
+	"date_birth": "1992-07-15",\
+	"phone": "+61 0404 412 631",\
+	"address_line_1": "40 Test Ave",\
+	"city": "Test",\
+	"state": "Test",\
+	"country": "Australia",\
+	"post_code": "3036"\
 }
+
 ### Dev notes
 
 If your docker crashes, run:
