@@ -70,8 +70,7 @@ export class CreateAccountDrivers1655117155950 implements MigrationInterface {
       })
     )
 
-    await queryRunner.createForeignKey(
-      'account_drivers',
+    await queryRunner.createForeignKeys('account_drivers', [
       new TableForeignKey({
         name: 'account_id_FK',
         columnNames: ['account_id'],
@@ -79,11 +78,7 @@ export class CreateAccountDrivers1655117155950 implements MigrationInterface {
         referencedTableName: 'accounts',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      })
-    )
-
-    await queryRunner.createForeignKey(
-      'account_drivers',
+      }),
       new TableForeignKey({
         name: 'account_details_id_FK',
         columnNames: ['account_details_id'],
@@ -91,8 +86,8 @@ export class CreateAccountDrivers1655117155950 implements MigrationInterface {
         referencedTableName: 'accounts_details',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      })
-    )
+      }),
+    ])
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
