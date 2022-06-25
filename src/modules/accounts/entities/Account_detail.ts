@@ -40,9 +40,6 @@ export class Account_detail {
   @Column()
   post_code: string
 
-  @OneToMany(() => Account, account => account.account_detail)
-  accounts: Account[]
-
   @OneToMany(() => Account_driver, account_driver => account_driver)
   account_driver: Account_driver[]
 }

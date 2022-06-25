@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs'
 import { isBelow21 } from '../../../helper/isOver18'
 import { AppError } from '../../../errors/AppError'
-import { format_account } from '../../../helper/formatAccount'
+import { format_account } from '../../../helper/formatEntity'
 import { formatDate } from '../../../helper/formatDate'
 import { IAccountDTO } from '../dtos/IAccount'
 import { ICreateAccountDTO } from '../dtos/ICreateAccount'

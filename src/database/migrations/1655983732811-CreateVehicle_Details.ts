@@ -20,14 +20,17 @@ export class CreateVehicleDetails1655983732811 implements MigrationInterface {
           {
             name: 'next_services_date',
             type: 'date',
+            isNullable: true,
           },
           {
             name: 'price',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'notes',
             type: 'varchar',
+            isNullable: true,
           },
         ],
       })
