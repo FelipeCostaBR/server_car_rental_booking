@@ -1,5 +1,7 @@
-import { IAccountDTO } from '../modules/accounts/dtos/IAccount'
 import { Account } from '../modules/accounts/entities/Account'
+import { Vehicle } from '../modules/vehicles/entities/Vehicle'
+import { IVehicleDTO } from '../modules/vehicles/dtos/IVehicle'
+import { IAccountDTO } from '../modules/accounts/dtos/IAccount'
 
 export const format_account = (account: Account): IAccountDTO => ({
   id: account.id,
@@ -19,4 +21,23 @@ export const format_account = (account: Account): IAccountDTO => ({
   created_at: account.created_at,
   updated_at: account.updated_at,
   deleted_at: account.deleted_at,
+})
+
+export const format_vehicle = (vehicle: Vehicle): IVehicleDTO => ({
+  id: vehicle.id,
+  registration_status: vehicle.registration_status,
+  registration_number: vehicle.registration_number,
+  VIN: vehicle.VIN,
+  model: vehicle.model,
+  make: vehicle.make,
+  body: vehicle.body,
+  year: vehicle.year,
+  engine: vehicle.engine,
+  transmission: vehicle.transmission,
+  fuel: vehicle.fuel,
+  color: vehicle.color,
+  odometer: vehicle.vehicle_detail.odometer,
+  next_services_date: vehicle.vehicle_detail.next_services_date,
+  price: vehicle.vehicle_detail.price,
+  notes: vehicle.vehicle_detail.notes,
 })
