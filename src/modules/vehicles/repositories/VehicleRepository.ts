@@ -81,8 +81,6 @@ class VehicleRepository implements IVehicleRepository {
   }
 
   async findOneBy(registration_number: string): Promise<Vehicle> {
-    // Can find by these vehicle information: registration_number, model, make
-
     const vehicle = await this.vehicle_repository.findOne({
       where: { registration_number },
     })

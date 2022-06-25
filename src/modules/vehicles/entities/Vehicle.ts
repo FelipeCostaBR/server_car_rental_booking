@@ -19,6 +19,7 @@ export class Vehicle {
   @JoinColumn({ name: 'vehicle_details_id' })
   vehicle_detail: Vehicle_detail
 
+  @Column()
   vehicle_status: string
 
   @Column()

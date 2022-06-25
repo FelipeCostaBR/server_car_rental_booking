@@ -8,6 +8,7 @@ import { Vehicle } from '../modules/vehicles/entities/Vehicle'
 import { Account_detail } from '../modules/accounts/entities/Account_detail'
 import { Account_driver } from '../modules/accounts/entities/Account_driver'
 import { Vehicle_detail } from '../modules/vehicles/entities/Vehicle_detail'
+import { Vehicle_status } from '../modules/vehicles/entities/Vehicle_status'
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -19,6 +20,7 @@ export const AppDataSource = new DataSource({
   entities: [
     Vehicle,
     Vehicle_detail,
+    Vehicle_status,
     Admin,
     Account_driver,
     Account_detail,
